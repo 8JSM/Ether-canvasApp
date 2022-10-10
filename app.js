@@ -1,4 +1,5 @@
-const textInput = document.querySelector("#text");
+const saveBtn = document.querySelector("#save-btn");
+const textInput = document.querySelector(".input");
 const fileInput = document.querySelector("#file");
 const eraserBtn = document.querySelector("#eraser-btn");
 const initBtn = document.querySelector("#init-btn");
@@ -136,6 +137,14 @@ function onDoubleClick(event) {
 
 }
 
+function saveClick() {
+    const url = canvas.toDataURL(); // base64 string
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "img.png";
+    a.click();
+}
+
 canvas.addEventListener("dblclick", onDoubleClick);
 canvas.addEventListener("mousemove", onMouseMove);
 canvas.addEventListener("mousedown", startPaint);
@@ -157,3 +166,4 @@ eraserBtn.addEventListener("click", eraserClick);
 // file
 fileInput.addEventListener("change", fileChange);
 
+saveBtn.addEventListener("click", saveClick);
